@@ -1,13 +1,25 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Navbar } from 'react-bootstrap'
+import { withRouter, Link } from 'react-router-dom'
+import { Nav, Navbar } from 'react-bootstrap'
+import { StyleSheet, css } from 'aphrodite';
 import Routes from './Routes'
-import './App.css'
+import RouteNavItem from './components/RouteNavItem'
+
+const styles = StyleSheet.create({
+  app: {
+    marginTop: '20px'
+  }
+});
 
 class App extends Component {
+  handleNavLink = (event) => {
+    event.preventDefault();
+    this.props.history.push(event.currentTarget.getAttribute('href'));
+  }
+
   render () {
     return (
-      <div className='App container'>
+      <div className={css(styles.app)}>
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
@@ -15,6 +27,12 @@ class App extends Component {
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <RouteNavItem onClick={this.handleNavLink} href='/signup'>Signup</RouteNavItem>
+              <RouteNavItem onClick={this.handleNavLink} href='/login'>Login</RouteNavItem>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
         <Routes />
       </div>
@@ -22,4 +40,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withRouter(App);
