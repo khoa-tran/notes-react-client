@@ -51,7 +51,6 @@ class Login extends Component {
     try {
       const userToken = await this.login(this.state.username, this.state.password);
       this.props.updateUserToken(userToken);
-      this.props.history.push('/'); // redirect to home page
     } catch (e) {
       alert(e);
       this.setState({ isLoading: false });
