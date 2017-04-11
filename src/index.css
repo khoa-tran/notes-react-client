@@ -1,6 +1,6 @@
 body {
-  margin: 0;
-  padding: 0;
+  margin: 10px;
+  padding: 10px;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   color: #333;
@@ -26,4 +26,8 @@ input[type=file] {
 @keyframes spin {
   from { transform: scale(1) rotate(0deg); }
   to { transform: scale(1) rotate(360deg); }
+}
+form textarea.form-control {
+  height: 300px;
+  font-size: 24px;
 }
